@@ -1,4 +1,4 @@
-### 第五章   初始化清理 ###
+### 第五章   初始化与清理 ###
 --------------------------
 ##### 5.1 用构造器确保初始化  
 
@@ -108,18 +108,17 @@ class Mugs {
 ##### 5.8 数组初始化  
 
 1. 数据是什么？  
-数组是相同类型的，用一个标识符名称封装到一起的对象序列或基本数据类型序列
+* 数组是相同类型的，用一个标识符名称封装到一起的对象序列或基本数据类型序列  
+* 数据是通过方括号下标操作符[]来定义使用的  
 
-2. 数据是通过方括号下标操作符[]来定义使用的  
-
-3. 数组的定义定义  
+2. 数组的定义定义  
 ```
 int a[];  
 //或  
 int[] a;
 ```
 
-4. 可变参数列表  
+3. 可变参数列表  
 * 由于所有的类都直接或间接继承于Object类，所以可以创建以Object数组为参数的方法，实现可变参数  
 * 示例：  
 ```
@@ -128,4 +127,91 @@ static void printArray(Object[] obj) {
 }
 
 printArray( new Object[new Integer(1), new Float(2.0), new Double(1.1111)] );
+```
+
+4. 数组的初始化(两种方式)    
+* 第一种：静态初始化(花括号{}初始化):   
+  静态初始化表示程序员在初始化数组时为每个数组元素先赋值，由系统决定数组长度  
+
+```
+int[] a1 = {1, 2, 3, 4, 5};
+
+User[] b = {
+    new User(100, "张三"),
+    new User(101, "李四"),
+    new User(102, "王五")
+    }
+```
+
+
+* 第二种：动态初始化(引用传递初始化)  
+  动态初始化指程序员在初始化数组时指定数组长度，由编译器给数组元素分配初始值  
+
+```
+int[] a = new int[10];  //动态初始化，长度为10，各元素默认值由编译器指定为0
+
+//后面就可以自己赋值了，覆盖编译器分配的默认值
+for (int i=0; i<a.length; i++) {
+    a[i] = 100;
+}
+```
+
+* 变长数组的定义(元素为基本类型）  
+```
+//不能用new方式创建单个基本数据类型，但是可以创建数组元素
+Random rand = new Randon(47);
+int[] a = new int[ rand.newInt(20) ]; 
+```
+
+* 变长数组的定义(元素为对象）  
+```
+Random rand = new Randown(47);
+Integer[] a = new Integer[ rand.newInt(20) ]; //记住：数组元素存储的是对象的**引用**
+System.out.println(" length of a = " + a.length );
+
+for ( int i=0; i<a.length(); i++ ) {
+    a[i] = rand.nextInt(500);   //这里才对元素内容赋值了
+}
+System.out.println( Arrays.toString(a) );
+```
+
+
+##### 5.9 枚举类型
+
+1. 枚举是什么？  
+  枚举是一个被命名的整形常数的集合，用于申明一组带标示符的常熟  
+
+2. 申明枚举  
+```
+//申明枚举使用enum关键字,如：
+public enum SexEnum {
+    MALE, FEMALE
+} 
+
+public enum Color {
+    RED, BLUE, GREEN, BLACK
+}
+```
+
+3. 使用枚举  
+```
+//枚举可以使switch语句的可读性更强，示例如：
+enum Signal {
+    GREEN, YELLOW, RED
+}
+
+public class TrafficLight {
+    Signal color = Signal.RED;
+
+    public void change() {
+        switch( color ) {
+            case RED:
+                color = Signal.GREEN;   break;
+            case YELLOW:
+                color = Signal.RED;     break;
+            case GREEN:
+                color = Signal.YELLOW;  break;
+        }
+    }
+}
 ```
