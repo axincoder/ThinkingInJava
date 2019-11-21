@@ -54,7 +54,7 @@ public class Bath {
 1. 写法  
 ```
 //Child类，继承了Father类
-public class Father {
+class Father {
     private String name;
 
     // 构造器 
@@ -83,4 +83,44 @@ public class Father {
     }  
 
 }
+
+// 继承的写法，使用extends关键字, 父类的哪些方法或属性在子类中可以使用，主要看权限修饰符
+public class Child extends Father {
+    //.....
+}
+
 ```
+
+2. 初始化基类  
+
+* 导出类(子类)继承了基类(父类), 在生成导出类对象时，会涉及到导出类和基类的初始化顺序，Java的顺序是先初始化基类，再初始化导出类。示例代码如下：   
+```
+class Art {
+    Art() {
+        System.out.println("Art Constructor");
+    }
+}
+
+class Drawing extends Art {
+    Drawing() {
+        Sysout.out.println("Drawing Constructor");
+    }
+}
+
+public class Cartoon extends Drawing {
+    Carton() {
+        System.out.println("Cartonn Constructor");
+    }
+
+    public static void main(String[] args) {
+        Cartoon x = new Cartoon();    
+    }
+}
+
+
+//输出结果为：
+Art Constructor
+Drawing Constructor
+Cartoon Constructor
+```
+
