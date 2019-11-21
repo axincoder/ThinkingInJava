@@ -176,4 +176,84 @@ public class B {
 
 ##### 7.4 结合使用组合和继承
 
+1. 示例代码  
+```
+// 基类
+class Plate {
+    Plate(int i) {
+        System.out.println("Plate Constructor.");
+    }
+}
 
+// 继承
+class DinnerPlate extends Plate {
+    DinnerPlate(int i) {
+        super(i); //初始化基类的构造方法
+        System.out.println("DinnerPlate Constructor.");
+    }
+}
+
+// 基类
+class Utensil {
+    Utensil(int i) {
+        System.out.println("Utensil Constructor.");
+    }
+}
+
+// 继承
+class Spoon extends Utensil {
+    Spoon(int i) {
+        super(i);
+        System.out.println("Spoon Constructor.");
+    }
+}
+
+// 继承
+class Fork extends Utensil {
+    Fork(int i) {
+        super(i);
+        System.out.println("Fork Constructor.");
+    }
+}
+
+// 继承
+class Knife extends Utensil {
+    Knife(int i) {
+        super(i);
+        System.out.println("Knife Constructor.");
+    }
+}
+
+// 基类
+class Custom {
+    Custom(int i) {
+        System.out.println("Custom Constructor.");
+    }
+}
+
+// 继承
+public class PlaceSetting extend Custom {
+    // 定义“引用”
+    private Spoon sp;
+    private Fork frk;
+    private Knife kn;
+    private DinnerPlate pl;
+
+    public PlaceSetting(int i) {
+        // 初始化基类的构造函数
+        super( i+1 );
+        
+        // 初始化组合的对象 
+        sp = new Spoon( i+2 );
+        frk = new Fork( i+3 );
+        kn = new Knife( i+4 );
+        pl = new DinnerPlate( i+5 );
+
+        System.out.println("PlaceSetting Constructor.");
+    }
+
+    public static void main(String[] args) {
+        PlaceSetting x = new PlaceSetting(9);
+    }
+}
+```
