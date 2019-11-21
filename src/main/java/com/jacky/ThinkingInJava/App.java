@@ -3,6 +3,20 @@ package com.jacky.ThinkingInJava;
 import java.util.Arrays;
 import java.util.Random;
 
+
+class Bath {
+	private String s = "Happy1";
+	
+//	public Bath() {
+//		this.s = "Happy2";
+//	}
+//	
+	@Override
+	public String toString() {
+		
+		return this.s;
+	}
+}
 /**
  * Hello world!
  *
@@ -30,9 +44,12 @@ public class App
 //       
 //       System.out.println( Arrays.toString(a) );
     	
-    	Color color = Color.GREEN;
+//    	Color color = Color.GREEN;   	
+//    	System.out.println(color.name);
+//    	System.out.println(color.index);
     	
-    	System.out.println(color.name);
-    	System.out.println(color.index);
+    	Bath bath = new Bath();
+    	
+    	System.out.println(bath.toString());
     }
 }
