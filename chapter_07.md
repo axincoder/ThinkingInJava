@@ -49,24 +49,38 @@ public class Bath {
 ```
 
 
+##### 7.2 继承语法
 
+1. 写法  
+```
+//Child类，继承了Father类
+public class Father {
+    private String name;
 
+    // 构造器 
+    public Father() {
+        this.name = "hello";
+    }
+    
+    // 私有型方法:  只能在本类中被使用
+    private String p1() {
+        return this.name
+    }  
 
+    // 保护型方法:  只能本类，子类中被使用
+    protected String p2() {
+        return this.name
+    }  
 
+    // 无权限修饰符方法: 只能在包（package）中被使用
+    String p3() {
+        return this.name
+    }  
 
+    // 公有型方法:  最大权限，都可以使用
+    public String p4() {
+        return this.name
+    }  
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
+```
