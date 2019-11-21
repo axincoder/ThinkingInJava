@@ -124,3 +124,56 @@ Drawing Constructor
 Cartoon Constructor
 ```
 
+* 带参数的构造器  
+```
+//如果基类没有默认的无参构造器，则导出类必须使用super显示的调用基类的构造方法，示例为：
+
+class Game {
+    public Game(int i) { 
+        System.out.println("Game Constructor"); 
+    }
+}
+
+
+class BoardGame extends Game {
+    public BoardGame(int i) {
+        super(i);
+        System.out.println("BoardGame Constructor");
+    }
+}
+```
+
+
+
+
+##### 7.3 代理  
+
+1. 代理的介绍
+* Java没有直接提供代理功能，而是通过继承，组合等方式实现代理的功能  
+
+* 代理的作用：
+  假定被代理类A有4个方法可以提供对外使用，因需求和权限控制等原因， 需要将代理类A中的2个方法提供出来，同时需要增加新的1个方法，此时就可以新增一个代理类B，B的功能是代理A提供原2个方法，同时新增1个方法。
+```
+public class A {
+    public void A1() {}
+    public void A2() {}
+    public void A3() {}
+    public void A4() {}
+}
+
+public class B {
+    A a = new A(); //示例化被代理类
+
+    public void A1() { a.A1(); } //提供A1功能
+                                 //屏蔽了A2功能
+    public void A3() { a.A3(); } //提供A3功能
+                                 //屏蔽了A4功能
+    
+    public void B1() { ... } //提供新增的B1功能
+} 
+```
+
+
+##### 7.4 结合使用组合和继承
+
+

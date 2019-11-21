@@ -17,6 +17,30 @@ class Bath {
 		return this.s;
 	}
 }
+
+class Art {
+	public Art() {
+		System.out.println("Art Constructor.");
+	}
+}
+
+class Drwaing extends Art{
+	private String name;
+	
+	public Drwaing(String name) {
+		this.name = name;
+		System.out.println("Drwaint Constructor.");
+	}
+}
+
+class Cartoon extends Drwaing {
+	
+	public Cartoon() {
+		super("jj");
+		System.out.println("Cartoon Constructor.");
+	}
+}
+
 /**
  * Hello world!
  *
