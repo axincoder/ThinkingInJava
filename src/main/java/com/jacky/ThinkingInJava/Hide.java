@@ -40,20 +40,15 @@ public class Hide {
 		this.k = "hello";
 	}
 	
-	public static String getStr() {
-		static final String s = "h";
-		return s;
-	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Bart b = new Bart();
-		final int a;
 		
 		b.doh(1);
 		b.doh('x');
 		b.doh(1.0f);
 		b.doh(new MilHouse());
-		System.out.println("a="+a);
+
 	}
 }
