@@ -463,3 +463,10 @@ public class FinalTest {
 3. final方法  
 * final修饰的方法，禁止被继承类修改
 * 类中的private方法，隐式都是final的 
+
+4. final类
+* final修饰的类，禁止被继承
+
+
+##### 7.9 初始化及类的加载  
+
