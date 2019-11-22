@@ -460,3 +460,6 @@ public class FinalTest {
 }
 ```
 
+3. final方法  
+* final修饰的方法，禁止被继承类修改
+* 类中的private方法，隐式都是final的 
