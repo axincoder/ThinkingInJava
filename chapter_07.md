@@ -387,13 +387,20 @@ protected修饰的成员属性或方法，本类可见，子类可见
 
 2. final变量  
 * Java语言支持的变量类型有三种：  
-
 类变量：独立于方法之外的变量，用static修饰  
-
 实例变量：独立于方法之外的变量，不用static修饰  
-
 局部变量：类的方法（构造方法，方法）中的变量  
- 
+```
+//示例
+public class Variable {
+    static int allClicks = 0;       //类变量
+    String str = "hello world";     //实例变量
+    
+    public void method() {
+        int i = 0;                  //局部变量
+    }
+}
+```
 
 * 在Java中，常量必须是基本数据类型，并用final关键字表示，并且在定义时必须对其赋值
 * 一个即是static又是final的域，表示保存在不能改变的存储空间中
