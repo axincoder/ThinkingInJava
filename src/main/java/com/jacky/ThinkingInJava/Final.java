@@ -21,7 +21,12 @@ class Variable2 {
 	{
 		k = 0;
 	}
-	
+}
+
+class Variable3{
+	public void name() {
+
+	}
 }
 
 
