@@ -1,5 +1,11 @@
 package com.jacky.chapter_08;
 
+abstract class TTT {
+	public void name() {
+		System.out.println("----");
+	}
+}
+
 class Super {
 	public int field = 0;
 
@@ -23,6 +29,7 @@ class Sub extends Super {
 public class FieldAccess {
 
 	public static void main(String[] args) {
+
 		Super sup = new Sub();
 		System.out.println("sup.field = " + sup.field + " , sup.getField() = " + sup.getField());
 
