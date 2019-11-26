@@ -112,3 +112,172 @@ public class Adventure {
 
 }
 ```
+
+
+##### 9.5 通过继承类扩展接口  
+1. 通过继承在新接口中扩展接口  
+```
+package com.jacky.interfaces.multi;
+
+//第一个接口
+interface Monster {
+    void menace();
+}
+//第二个接口，通过继承扩展接口，注意哦，这里用的是extends关键字
+interface DangerousMonster extends Monster {
+    void destory();
+}
+//第三个接口
+interface Lethal {
+    void kill();
+}
+//第四个接口，通过继承，继续扩展接口
+interface Vampire extends DangerousMonster, Lethal {
+    void drinkBlood();
+}
+
+/*
+ * 定义第一个实现类(根据接口扩展，需要实现2个方法）
+ */
+class DragonZilla implements DangerousMonster {
+
+    @Override
+    public void menace() {}
+    
+    @Override
+    public void destory() {}
+    
+}
+
+/*
+ * 定义一个实现类（根据接口扩展，需要实现4个方法）
+ */
+class VeryBadVampire implements Vampire {
+
+    @Override
+    public void destory() {}
+
+    @Override
+    public void menace() {}
+
+    @Override
+    public void kill() {}
+
+    @Override
+    public void drinkBlood() {}
+    
+}
+
+
+public class HorrorShow {
+
+}
+```
+
+
+2. 组合接口时的名字冲突  
+* 在实现多重继承时，如果方法仅仅返回类型不同（其他都一样），这样时无法识别的。  
+```
+package com.jacky.interfaces.multi;
+
+interface I1 {
+    void f();
+}
+interface I2 {
+    int f(int i);
+}
+interface I3 {
+    int f();
+}
+
+class C {
+    public int f() {
+        return 1;
+    }
+}
+
+class C2 implements I1, I2 {
+    public void f() {}
+    
+    public int f(int i) {
+        return 1;
+    }
+}
+
+class C3 extends C implements I2 {
+    public int f(int i) {
+        return 1;
+    }
+}
+
+class C4 extends C implements I3 {
+    /*
+     * 继承关系：
+     * 1、C：public int f()
+     * 2、I3:int f();
+     */
+    public int f() {
+        System.out.println("C4");
+        return 1;
+    }
+}
+
+class C5 extends C implements I1 {
+    /*
+     * 这种继承、实现的方式是有问题的，原因为：
+     * 1、C中有方法：public int f()
+     * 2、I1中有接口：void f();
+     * C中的int f()与I1中的void f()只有返回类型不同，编译器无法通过
+     */
+}
+
+
+public class InterfaceCollision {
+    public static void main(String[] args) {
+        C c1 = new C();
+        C2 c2 = new C2();
+        C3 c3 = new C3();
+        C4 c4 = new C4();
+
+    }
+}
+```
+
+
+
+##### 9.6 适配器接口  
+1. 接口最吸引人的地方就是允许同一个接口有不同的具体实现  
+
+2. 接口的一种常见用法就是**策略设计模式**  
+
+
+##### 9.7 接口中的域  
+1. 接口中的任何成员变量自动为 public & static & final，因此接口成为一种便捷的创建常量组的工具，示例：  
+``` 
+import java.util.Random;
+
+//接口可以便捷的创建常量工作
+//接口的成员变量为 public & static & final 类型（自动的）
+interface RandVals {
+    Random RAND =  new Random(47);
+    
+    int RANDOM_INT = RAND.nextInt(10);
+    long RANDOM_LONG = RAND.nextLong() * 10;
+    float RANDOM_FLOAT = RAND.nextFloat() * 10;
+    double RANDOM_DOUBLE = RAND.nextDouble() * 10;
+    
+}
+
+public class TestRandVals {
+
+
+    public static void main(String[] args) {
+        System.out.println(RandVals.RANDOM_INT);
+        System.out.println(RandVals.RANDOM_LONG);
+        System.out.println(RandVals.RANDOM_LONG);
+        System.out.println(RandVals.RANDOM_FLOAT);
+        System.out.println(RandVals.RANDOM_DOUBLE);
+    }
+
+}
+```
