@@ -3,7 +3,7 @@ package com.jacky.chapter_11.holding;
 import java.util.ArrayList;
 
 public class ApplesAndOrangesWithGenerics {
-
+String
 	public static void main(String[] args) {
 		ArrayList<Apple> apples = new ArrayList<Apple>();   //<Apple>就表示使用了泛型
 		
