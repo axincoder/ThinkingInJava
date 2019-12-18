@@ -2,7 +2,7 @@
 --------------------------
 
 ##### 13.1 不可变String  
-* String对象是不可变的。String中看起来像是修改String的方法，其实都是重新创建了String  
+1. String对象是不可变的。String中看起来像是修改String的方法，其实都是重新创建了String  
 
 
 ##### 13.2
